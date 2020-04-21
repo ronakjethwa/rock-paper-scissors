@@ -13,7 +13,7 @@ const scissors_div = document.getElementById("s");
 // Creating a random function to generate computer choice
 
 function computerChoice() {
-    const choices = ['r', 'p', 's'];
+    const choices = ["r", "p", "s"];
     return choices[Math.floor(Math.random() * 3)];
 }
 
@@ -23,52 +23,51 @@ function win(userInput, compChoice) {
     userScore++;
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
-    if (userInput === 'r' && compChoice === 's') {
+    if (userInput === "r" && compChoice === "s") {
         result_p.innerHTML = `Computer chosed Scissors. You Win ✅🎉`;
-    }
-    else if (userInput === 'p' && compChoice === 'r') {
+    } else if (userInput === "p" && compChoice === "r") {
         result_p.innerHTML = `Computer chosed Rock. You Win ✅🎉`;
-    }
-    else if (userInput === 's' && compChoice === 'p') {
+    } else if (userInput === "s" && compChoice === "p") {
         result_p.innerHTML = `Computer chosed Paper. You Win ✅🎉`;
     }
     // Using a delay of 350ms after showing background green/red/black colour
-    document.getElementById(userInput).classList.add('win');
-    setTimeout(function () { document.getElementById(userInput).classList.remove('win'); }, 350);
+    document.getElementById(userInput).classList.add("win");
+    setTimeout(function () {
+        document.getElementById(userInput).classList.remove("win");
+    }, 350);
 }
 
 function Lose(userInput, compChoice) {
     computerScore++;
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
-    if (userInput === 'r' && compChoice === 'p') {
+    if (userInput === "r" && compChoice === "p") {
         result_p.innerHTML = "Computer chosed Paper 📜 . You Lost ❌";
-    }
-    else if (userInput === 'p' && compChoice === 's') {
+    } else if (userInput === "p" && compChoice === "s") {
         result_p.innerHTML = `Computer chosed Scissors ✂ . You Lost ❌`;
-    }
-    else if (userInput === 's' && compChoice === 'r') {
+    } else if (userInput === "s" && compChoice === "r") {
         result_p.innerHTML = `Computer chosed Rock ⬛ . You Lost ❌`;
     }
-    document.getElementById(userInput).classList.add('lose');
-    setTimeout(function () { document.getElementById(userInput).classList.remove('lose'); }, 350);
-
+    document.getElementById(userInput).classList.add("lose");
+    setTimeout(function () {
+        document.getElementById(userInput).classList.remove("lose");
+    }, 350);
 }
 
 function Draw(userInput, compChoice) {
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
-    if (userInput === 'r' && compChoice === 'r') {
+    if (userInput === "r" && compChoice === "r") {
         result_p.innerHTML = `Computer chosed Rock ⬛ . It's a Draw.`;
-    }
-    else if (userInput === 'p' && compChoice === 'p') {
+    } else if (userInput === "p" && compChoice === "p") {
         result_p.innerHTML = `Computer chosed Paper 📜 . It's a Draw.`;
-    }
-    else if (userInput === 's' && compChoice === 's') {
+    } else if (userInput === "s" && compChoice === "s") {
         result_p.innerHTML = `Computer chosed Scissors ✂ . It's a Draw.`;
     }
-    document.getElementById(userInput).classList.add('draw');
-    setTimeout(function () { document.getElementById(userInput).classList.remove('draw'); }, 350);
+    document.getElementById(userInput).classList.add("draw");
+    setTimeout(function () {
+        document.getElementById(userInput).classList.remove("draw");
+    }, 350);
 }
 
 // Getting called by main function with info of user choice
@@ -80,12 +79,18 @@ function game(userInput) {
     if (UserChoice === "rs" || UserChoice === "pr" || UserChoice === "sp") {
         win(userInput, compChoice);
         console.log("Win");
-    }
-    else if (UserChoice === "rp" || UserChoice === "ps" || UserChoice === "sr") {
+    } else if (
+        UserChoice === "rp" ||
+        UserChoice === "ps" ||
+        UserChoice === "sr"
+    ) {
         Lose(userInput, compChoice);
         console.log("Lose");
-    }
-    else if (UserChoice === "rr" || UserChoice === "pp" || UserChoice === "ss") {
+    } else if (
+        UserChoice === "rr" ||
+        UserChoice === "pp" ||
+        UserChoice === "ss"
+    ) {
         Draw(userInput, compChoice);
         console.log("Draw");
     }
@@ -95,15 +100,15 @@ function game(userInput) {
 // Also initialiser of game
 
 function main() {
-    rock_div.addEventListener('click', function () {
-        game('r');
-    })
-    paper_div.addEventListener('click', function () {
-        game('p');
-    })
-    scissors_div.addEventListener('click', function () {
-        game('s');
-    })
+    rock_div.addEventListener("click", function () {
+        game("r");
+    });
+    paper_div.addEventListener("click", function () {
+        game("p");
+    });
+    scissors_div.addEventListener("click", function () {
+        game("s");
+    });
 }
 
 main();
